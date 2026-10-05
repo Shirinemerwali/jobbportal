@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { renderRichText, StoryblokServerComponent } from "@storyblok/react/rsc";
+import { renderRichText } from "@storyblok/react/rsc";
 import { getStoryblokApi } from "../../../storyblok";
 
 export default async function JobPage({
@@ -22,24 +22,33 @@ export default async function JobPage({
     const job = data.story;
 
     return (
-      <main>
-        <h1>{job.content.title}</h1>
+      <main className="job-detail-page">
+        <section className="job-detail-hero">
+          <div className="job-detail-container">
+            <p className="eyebrow">
+              LEDIG TJÄNST
+            </p>
 
-        <p>{job.content.summary}</p>
+            <h1>{job.content.title}</h1>
 
-        <p>
-          <strong>Plats:</strong> {job.content.location}
-        </p>
+            <p className="job-detail-summary">
+              {job.content.summary}
+            </p>
 
-        <p>
-          <strong>Avdelning:</strong> {job.content.department}
-        </p>
+            <div className="job-info">
+              <span>{job.content.location}</span>
+              <span>{job.content.department}</span>
+            </div>
+          </div>
+        </section>
 
-        <div
-          dangerouslySetInnerHTML={{
-            __html: renderRichText(job.content.content),
-          }}
-        />
+        <section className="job-detail-content">
+          <div
+            dangerouslySetInnerHTML={{
+              __html: renderRichText(job.content.content),
+            }}
+          />
+        </section>
       </main>
     );
   } catch {

@@ -1,20 +1,15 @@
-export default function Header (){
- return (
+export default function Header() {
+  return (
+    <header className="site-header">
+      <nav className="site-nav">
+        <a href="/" className="logo">
+          JOBBPORTAL
+        </a>
 
-    <header> 
-  <nav>
-  <a href="/">Jobbportal</a>
-  <a href="/jobs"> Lediga jobb</a>
-
-  </nav>
-
-
-
+        <a href="/jobs" className="nav-link">
+          Lediga jobb
+        </a>
+      </nav>
     </header>
- );
-
-
-
-
-
+  );
 }
